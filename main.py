@@ -60,15 +60,15 @@ def image_ai(design_prompt, client):
 
 from pathlib import Path
 
-def audio_ai(story_prompt, client):
-  speech_file_path = Path(__file__).parent / "speech.mp3"
-  audio = client.audio.speech.create(
-    model="tts-1",
-    voice="alloy",
-    input=f'{story_prompt}'
-  )
+# def audio_ai(story_prompt, client):
+#   speech_file_path = Path(__file__).parent / "speech.mp3"
+#   audio = client.audio.speech.create(
+#     model="tts-1",
+#     voice="alloy",
+#     input=f'{story_prompt}'
+#   )
   
-  return audio
+#   return audio
 
 # methods
 api_key = st.secrets["OPENAI_SECRET"]
@@ -90,10 +90,10 @@ with st.form('This is a form'):
       image_url = image_ai(refined_prompt, client)
       st.image(image_url)
       st.toast('Image generated done!')
-    with st.spinner('Wait for the audio generate...'):
-      audio_ai(story, client)
-      st.audio("speech.mp3", format="audio/mpeg", loop=True)
-      st.toast('Audio generated done!')
+    # with st.spinner('Wait for the audio generate...'):
+    #   audio_ai(story, client)
+    #   st.audio("speech.mp3", format="audio/mpeg", loop=True)
+    #   st.toast('Audio generated done!')
   
   
 
