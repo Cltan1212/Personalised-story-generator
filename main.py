@@ -65,7 +65,7 @@ def audio_ai(story_prompt, client):
   audio = client.audio.speech.create(
     model="tts-1",
     voice="alloy",
-    input="Today is a wonderful day to build something people love!"
+    input=f'{story_prompt}'
   )
   
   return audio
@@ -90,8 +90,9 @@ with st.form('This is a form'):
       image_url = image_ai(refined_prompt, client)
       st.image(image_url)
       st.toast('Image generated done!')
-
-  st.audio("cat-purr.mp3", format="audio/mpeg", loop=True)
+    with st.spinner('Wait for the audio generate...'):
+      audio_ai(story, client)
+      st.audio("speech.mp3", format="audio/mpeg", loop=True)
   
   
 
