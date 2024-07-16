@@ -93,6 +93,7 @@ with st.form('This is a form'):
     with st.spinner('Wait for the audio generate...'):
       audio_ai(story, client)
       st.audio("speech.mp3", format="audio/mpeg", loop=True)
+      st.toast('Audio generated done!')
   
   
 
